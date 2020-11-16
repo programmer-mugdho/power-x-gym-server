@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
+const cors = require('cors')
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://powerXuser:L055KJ2BfcTvB0dh@cluster0.yf6o8.mongodb.net/powerXGym?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const port = 5000;
+app.use(cors())
 
 // mongoDB
 //ourTarget ,chooseUs
+
 client.connect(err => {
     const ourTargetCollection = client.db("powerXGym").collection("ourTarget");
     const chooseUsCollection = client.db("powerXGym").collection("chooseUs");
